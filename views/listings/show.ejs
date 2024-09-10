@@ -1,0 +1,46 @@
+<% layout("/layouts/boilerplate") %>
+
+<main class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="employee-detail-card">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="<%= employee.profilePhoto.url %>" class="img-fluid rounded" alt="<%= employee.name %>'s Photo">
+                    </div>
+                    <div class="col-md-8">
+                        <h2 class="employee-detail-name"><%= employee.name %></h2>
+                        <p><strong>Employee ID:</strong> <%= employee.employeeId %></p>
+                        <p><strong>Position:</strong> <%= employee.position %></p>
+                        <p><strong>Department:</strong> <%= employee.department %></p>
+                        <p><strong>Date of Joining:</strong> <%= employee.dateOfJoining.toDateString() %></p>
+                        <p><strong>Total Attendance:</strong> <%= employee.totalAttendance %></p>
+                        <p><strong>Last Attendance Time:</strong> <%= employee.lastAttendanceTime.toLocaleString() %></p>
+                        <h5>Contact Information</h5>
+                        <p><strong>Email:</strong> <%= employee.contactInformation.email %></p>
+                        <p><strong>Phone:</strong> <%= employee.contactInformation.phone %></p>
+                        <h5>Address</h5>
+                        <p><%= employee.address.street %>, <%= employee.address.city %>, <%= employee.address.state %> <%= employee.address.postalCode %>, <%= employee.address.country %></p>
+                        
+
+                        <% if(currUser._id=="66d0650103147610971bb8f0"){%>
+                        
+                        <h5>Salary</h5>
+                        <p>&#8377;<%= employee.salary.toLocaleString() %></p>
+                        
+                        <%}%>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="mt-4 d-flex justify-content-end">
+                <a href="/employees/<%= employee._id %>/edit" class="btn me-2" id="buttonColor">Edit Employee</a>
+                <form action="/employees/<%= employee._id %>?_method=DELETE" method="POST">
+                    <button type="submit" class="btn" id="buttonColor2">Delete Employee</button>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</main>

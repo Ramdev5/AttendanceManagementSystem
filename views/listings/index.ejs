@@ -1,0 +1,24 @@
+<% layout("/layouts/boilerplate") %> <!-- Specifies the layout file to use, assuming it's a custom layout system -->
+
+
+<body>
+    <main> <!-- Main content area -->
+        <div class="employee-container"> <!-- Container for employee cards, using a grid layout -->
+            <% employees.forEach(employee => { %> <!-- Iterates over the employees array and renders each employee's card -->
+                <a href="/employees/<%= employee._id %>" class="employee-card"> <!-- Link to the employee detail page -->
+                    <div class="employee-photo"> <!-- Section for employee photo -->
+                        <img src="<%= employee.profilePhoto.url %>" alt="<%= employee.name %>'s Photo"> <!-- Displays employee photo with a dynamic URL and alt text -->
+                    </div>
+                    <div class="employee-info"> <!-- Section for employee information -->
+                        <h2><b><%= employee.name %></b></h2> <!-- Displays employee's name -->
+                        <p><strong>Position:</strong> <%= employee.position %></p> <!-- Displays employee's position -->
+                        <!-- <p><strong>Department:</strong> <%= employee.department %></p> -->
+                        <!-- Uncomment the above line if you want to display the employee's department -->
+                    </div>
+                </a>
+            <% }) %> <!-- End of the loop -->
+        </div>
+        
+    </main>
+</body>
+</html>
